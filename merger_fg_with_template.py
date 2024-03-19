@@ -4,10 +4,10 @@ import numpy as np
 
 def transformImageUpload(logoFilepath, templateFilePath, outputFolder):
     bg_img = get_bg(logoFilepath)
-    output = cv2.resize(bg_img, (80, 80))
+    output = bg_img
     template1 = cv2.imread(templateFilePath)
 
-    coord = [0, 0, output.shape[0], output.shape[1]]
+    coord = [5, 5, 5+output.shape[0], 5+output.shape[1]]
 
     template1[coord[0]:coord[2], coord[1]:coord[3]] = output
     cv2.imwrite(outputFolder, template1)

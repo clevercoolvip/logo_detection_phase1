@@ -24,13 +24,18 @@ def get_bg(filename):
     outputMask = np.where((mask == cv2.GC_BGD) | (mask == cv2.GC_PR_BGD), 0, 1)
     outputMask = (outputMask * 255).astype("uint8")
     output = cv2.bitwise_and(img, img, mask=outputMask)
+    output = cv2.resize(output, (80, 80))
+    tmp = cv2.cvtColor(output, cv2.COLOR_BGR2GRAY)
+    _,alpha = cv2.threshold(tmp,0,255,cv2.THRESH_BINARY)
+    b, g, r = cv2.split(output)
+    rgba = [b,g,r, alpha]
+    dst = cv2.merge(rgba,4)
+    cv2.imwrite("noBGOutput/test.png", dst)
+    print(dst.shape)
 
-    cv2.imwrite(f"output/only_logo_{filename.split('.')[0]}.png", output)
-    print(output.shape)
-
-    return output
+    return dst
 
 if __name__=="__main__":
-    output = get_bg("logo33.png")
+    output = get_bg("userUploadLOGO/logo230.jpeg")
     cv2.imshow("Before", output)
     cv2.waitKey(0)
