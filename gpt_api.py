@@ -1,6 +1,9 @@
 import openai
+from dotenv import load_dotenv, dotenv_values
+load_dotenv()
+import os
 
-openai.api_key = "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"
+openai.api_key = os.getenv("MY_KEY")  
 
 
 def comp(PROMPT, MaxToken=50, outputs=3): 
