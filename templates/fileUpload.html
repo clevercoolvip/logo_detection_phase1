@@ -27,12 +27,18 @@
 </head>
 <body>
     <div class="bg">
-        <h1>Logomos</h1>
-        <h3>Welcome to Logomos</h3>
+        <h1>Shopify Logo</h1>
+        <h3>Welcome to Shopify Logo</h3>
         <div class="container centered-div">
         <form action="/" method="post" enctype="multipart/form-data">
             <label for="formFileLg" class="form-label">Upload a logo to continue</label>
             <input class="form-control form-control-lg" type="file" name="file"/>
+
+            <div class="input-group">
+                <span class="input-group-text">Tell us about logo: </span>
+                <textarea class="form-control" name="textarea" placeholder="type here" aria-label="With textarea"></textarea>
+            </div>
+
             <button class="btn btn-primary" type="submit" style="padding-top: 10px; margin-top: 10px;">Submit</button>
         </form>
         </div>

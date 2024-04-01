@@ -21,6 +21,8 @@ def get_bg(filename):
         ("Probable background", cv2.GC_PR_BGD),
     )
 
+    print(values)
+
     outputMask = np.where((mask == cv2.GC_BGD) | (mask == cv2.GC_PR_BGD), 0, 1)
     outputMask = (outputMask * 255).astype("uint8")
     output = cv2.bitwise_and(img, img, mask=outputMask)
